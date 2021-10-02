@@ -12,7 +12,7 @@ public class MyFrame extends JFrame{
 		this.setSize(FRAME_DIMENSIONS);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		
+		this.add(new MyPanel());
 		
 		this.show();
 	}

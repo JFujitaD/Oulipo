@@ -1,10 +1,12 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
 public class MyPanel extends JPanel{
-	private Color PANEL_BACKGROUND = Color.BLACK;
+	private final Color PANEL_BACKGROUND = Color.LIGHT_GRAY;
+	private final Color BAR_BACKGROUND = Color.BLUE;
 	
 	public MyPanel() {
 		this.setBackground(PANEL_BACKGROUND);
@@ -16,8 +18,8 @@ public class MyPanel extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		// Hand off drawing to FileUtils
-		MyUtils.drawCurve(g);
+		// Hand off drawing to MyUtils
+		MyUtils.drawCurve(g, BAR_BACKGROUND);
 	}
 	
 }

@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,7 +49,25 @@ public abstract class MyUtils{
 		}
 	}
 
-	public static void drawCurve(Graphics g) {
+	public static void drawCurve(Graphics g, Color barBackground) {
+		int wordCount = words.size();
+		int barWidth = MyFrame.getDimensions().width / wordCount;
+		int maxBarHeight = MyFrame.getDimensions().height;
+		int minWordLength = words.get(0).length();
+		int maxWordLength = words.get(words.size() - 1).length();
+		float ratio = maxBarHeight / maxWordLength;
 		
+		Point currentP = new Point(0, 0);
+		for(String word : words) {
+			int barHeight = (int) (word.length() * ratio);
+			currentP.y = maxBarHeight - barHeight;
+			
+			g.setColor(barBackground);
+			g.fillRect(currentP.x, currentP.y, barWidth, barHeight);
+			g.setColor(Color.BLACK);
+			g.drawRect(currentP.x, currentP.y, barWidth, barHeight);
+			
+			currentP.x += barWidth;
+		}
 	}
 }

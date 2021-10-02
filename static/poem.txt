@@ -1,3 +1,1 @@
-This is an example of a poem. It has several words, and
-a few punctuation marks across two lines. Let's use 
-three lines like this.
+This is an example of a poem. It has several words in it that are various lengths.

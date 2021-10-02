@@ -7,5 +7,7 @@ public class MyPanel extends JPanel{
 	
 	public MyPanel() {
 		this.setBackground(PANEL_BACKGROUND);
+		
+		FileUtils.processFile("static/poem.txt");
 	}
 }

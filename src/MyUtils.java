@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public abstract class FileUtils{
+public abstract class MyUtils{
 	private static ArrayList<String> words = new ArrayList<>();
 	
 	public static void processFile(String fileName) {

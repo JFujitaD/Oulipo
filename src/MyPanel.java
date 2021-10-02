@@ -9,7 +9,7 @@ public class MyPanel extends JPanel{
 	public MyPanel() {
 		this.setBackground(PANEL_BACKGROUND);
 		
-		FileUtils.processFile("static/poem.txt");
+		MyUtils.processFile("static/poem.txt");
 	}
 	
 	@Override
@@ -17,7 +17,7 @@ public class MyPanel extends JPanel{
 		super.paintComponent(g);
 		
 		// Hand off drawing to FileUtils
-		FileUtils.drawCurve(g);
+		MyUtils.drawCurve(g);
 	}
 	
 }

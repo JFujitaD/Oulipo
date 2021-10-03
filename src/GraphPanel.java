@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class GraphPanel extends JPanel{
-	private final Color PANEL_BACKGROUND = Color.LIGHT_GRAY;
+	private final Color PANEL_BACKGROUND = Color.DARK_GRAY;
 	
 	public GraphPanel() {
 		this.setBackground(PANEL_BACKGROUND);

@@ -6,12 +6,17 @@ import javax.swing.JPanel;
 
 public class MyPanel extends JPanel{
 	private final Color PANEL_BACKGROUND = Color.LIGHT_GRAY;
-	private final Color BAR_BACKGROUND = Color.BLUE;
 	
 	public MyPanel() {
 		this.setBackground(PANEL_BACKGROUND);
 		
+		// Process the file and sort the words into an array list
 		MyUtils.processFile("static/poem.txt");
+		
+		this.setPreferredSize(MyUtils.getPreferredSize());
+		
+		// For command line usage only
+		MyUtils.printSortedWords();
 	}
 	
 	@Override
@@ -19,7 +24,9 @@ public class MyPanel extends JPanel{
 		super.paintComponent(g);
 		
 		// Hand off drawing to MyUtils
-		MyUtils.drawCurve(g, BAR_BACKGROUND);
+		MyUtils.drawCurve(g);
+		
+		
 	}
 	
 }

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.BufferedReader;
@@ -7,10 +8,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.HashMap;
+import java.util.Random;
 
 public abstract class MyUtils{
+	private static Dimension panelDimensions = new Dimension();
 	private static ArrayList<String> words = new ArrayList<>();
+	private static HashMap<String, Color> colorMap = new HashMap<>();
+	private final static int BAR_WIDTH = 5;
+	private final static int MAX_BAR_HEIGHT = 800;
+	private final static long SEED = 123456;
 	
 	public static void processFile(String fileName) {
 		try {
@@ -26,10 +33,15 @@ public abstract class MyUtils{
 			}
 			
 			// Extract the words out of the lines
-			StringTokenizer tokenizer = new StringTokenizer(sb.toString(), " ");
-			while(tokenizer.hasMoreTokens()) {
-				String word = tokenizer.nextToken();
-				words.add(word.toLowerCase().replaceAll("[.,\\-';]", ""));
+			String[] splitWords = sb.toString().split("[ .,\\\"':;?!\\n]");
+			Random r = new Random(SEED);
+			for(String word : splitWords) {
+				if(word.length() != 0) {
+					words.add(word.toLowerCase());
+					
+					if(colorMap.get(word) == null)
+						colorMap.put(word, new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
+				}
 			}
 			
 			// Sort the words by length
@@ -49,25 +61,26 @@ public abstract class MyUtils{
 		}
 	}
 
-	public static void drawCurve(Graphics g, Color barBackground) {
-		int wordCount = words.size();
-		int barWidth = MyFrame.getDimensions().width / wordCount;
-		int maxBarHeight = MyFrame.getDimensions().height;
-		int minWordLength = words.get(0).length();
+	public static void drawCurve(Graphics g) {
 		int maxWordLength = words.get(words.size() - 1).length();
-		float ratio = maxBarHeight / maxWordLength;
+		float ratio = MAX_BAR_HEIGHT / maxWordLength;
 		
 		Point currentP = new Point(0, 0);
 		for(String word : words) {
 			int barHeight = (int) (word.length() * ratio);
-			currentP.y = maxBarHeight - barHeight;
+			currentP.y = MAX_BAR_HEIGHT - barHeight;
 			
-			g.setColor(barBackground);
-			g.fillRect(currentP.x, currentP.y, barWidth, barHeight);
+			g.setColor(colorMap.get(word));
+			g.fillRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
 			g.setColor(Color.BLACK);
-			g.drawRect(currentP.x, currentP.y, barWidth, barHeight);
+			g.drawRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
 			
-			currentP.x += barWidth;
+			currentP.x += BAR_WIDTH;
 		}
 	}
+
+	public static Dimension getPreferredSize() {
+		return new Dimension(BAR_WIDTH * words.size(), MAX_BAR_HEIGHT);
+	}
+	
 }

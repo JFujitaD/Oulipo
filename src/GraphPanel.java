@@ -24,7 +24,7 @@ public class GraphPanel extends JPanel{
 		super.paintComponent(g);
 		
 		// Hand off drawing to MyUtils
-		MyUtils.drawCurve(g);
+		MyUtils.drawGraph(g);
 		
 		
 	}

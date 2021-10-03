@@ -19,7 +19,7 @@ public abstract class MyUtils{
 	// Customize bar-width, max bar-height, and the seed for the random colors
 	private final static int BAR_WIDTH = 10;
 	private final static int MAX_BAR_HEIGHT = 800;
-	private final static long SEED = 123456;
+	private final static long SEED = 12345;
 	
 	public static void processFile(String fileName) {
 		try {
@@ -41,8 +41,8 @@ public abstract class MyUtils{
 				if(word.length() != 0) {
 					words.add(word.toLowerCase());
 					
-					if(colorMap.get(word) == null)
-						colorMap.put(word, new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
+					if(colorMap.get(word.toLowerCase()) == null)
+						colorMap.put(word.toLowerCase(), new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
 				}
 			}
 			
@@ -63,7 +63,7 @@ public abstract class MyUtils{
 		}
 	}
 
-	public static void drawCurve(Graphics g) {
+	public static void drawGraph(Graphics g) {
 		int maxWordLength = words.get(words.size() - 1).length();
 		float ratio = MAX_BAR_HEIGHT / maxWordLength;
 		
@@ -74,7 +74,7 @@ public abstract class MyUtils{
 			
 			g.setColor(colorMap.get(word));
 			g.fillRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
-			g.setColor(Color.BLACK);
+			g.setColor(Color.WHITE);
 			g.drawRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
 			
 			currentP.x += BAR_WIDTH;

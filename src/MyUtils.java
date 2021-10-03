@@ -15,7 +15,9 @@ public abstract class MyUtils{
 	private static Dimension panelDimensions = new Dimension();
 	private static ArrayList<String> words = new ArrayList<>();
 	private static HashMap<String, Color> colorMap = new HashMap<>();
-	private final static int BAR_WIDTH = 5;
+	
+	// Customize bar-width, max bar-height, and the seed for the random colors
+	private final static int BAR_WIDTH = 10;
 	private final static int MAX_BAR_HEIGHT = 800;
 	private final static long SEED = 123456;
 	
@@ -45,7 +47,7 @@ public abstract class MyUtils{
 			}
 			
 			// Sort the words by length
-			words.sort(new MyStringComparator());
+			words.sort(new StringLengthComparator());
 		} 
 		catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -81,6 +83,10 @@ public abstract class MyUtils{
 
 	public static Dimension getPreferredSize() {
 		return new Dimension(BAR_WIDTH * words.size(), MAX_BAR_HEIGHT);
+	}
+
+	public static ArrayList<String> getSortedWords() {
+		return words;
 	}
 	
 }

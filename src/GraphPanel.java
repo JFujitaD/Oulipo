@@ -4,10 +4,10 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class MyPanel extends JPanel{
+public class GraphPanel extends JPanel{
 	private final Color PANEL_BACKGROUND = Color.LIGHT_GRAY;
 	
-	public MyPanel() {
+	public GraphPanel() {
 		this.setBackground(PANEL_BACKGROUND);
 		
 		// Process the file and sort the words into an array list

@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class MyStringComparator implements Comparator<String>{
+public class StringLengthComparator implements Comparator<String>{
 	@Override
 	public int compare(String a, String b) {
 		if(a.length() < b.length())

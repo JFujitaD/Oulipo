@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -9,8 +10,10 @@ public class MyFrame extends JFrame{
 	public MyFrame() {
 		this.setTitle(FRAME_TITLE);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setLayout(new BorderLayout());
 		
-		this.add(new MyPanel());
+		this.add(new GraphPanel(), BorderLayout.CENTER);
+		this.add(new WordPanel(MyUtils.getSortedWords()), BorderLayout.WEST);
 		
 		this.pack();
 		this.show();

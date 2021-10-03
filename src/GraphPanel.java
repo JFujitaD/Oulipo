@@ -14,6 +14,7 @@ public class GraphPanel extends JPanel{
 		MyUtils.processFile("static/poem.txt");
 		
 		this.setPreferredSize(MyUtils.getPreferredSize());
+		this.addMouseMotionListener(new GraphMouseMotionListener());
 		
 		// For command line usage only
 		MyUtils.printSortedWords();

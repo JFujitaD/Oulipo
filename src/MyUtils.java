@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.Random;
 
 public abstract class MyUtils{
-	private static Dimension panelDimensions = new Dimension();
 	private static ArrayList<String> words = new ArrayList<>();
 	private static HashMap<String, Color> colorMap = new HashMap<>();
+	private static ArrayList<Bar> bars = new ArrayList<>();
 	
 	// Customize bar-width, max bar-height, and the seed for the random colors
 	private final static int BAR_WIDTH = 10;
@@ -48,6 +48,8 @@ public abstract class MyUtils{
 			
 			// Sort the words by length
 			words.sort(new StringLengthComparator());
+			
+			br.close();
 		} 
 		catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -77,8 +79,20 @@ public abstract class MyUtils{
 			g.setColor(Color.WHITE);
 			g.drawRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
 			
+			bars.add(new Bar(word, currentP.x, currentP.y, BAR_WIDTH, barHeight));
+			
 			currentP.x += BAR_WIDTH;
 		}
+	}
+	
+	public static Bar getBar(Point point) {
+		for(Bar b : bars) {
+			if(point.x >= b.x && point.x <= b.x + b.width) {
+				return b;
+			}
+		}
+		
+		return null;
 	}
 
 	public static Dimension getPreferredSize() {

@@ -35,7 +35,7 @@ public abstract class MyUtils{
 			}
 			
 			// Extract the words out of the lines
-			String[] splitWords = sb.toString().split("[ .,\\\"':;?!\\n]");
+			String[] splitWords = sb.toString().split("\\W+");
 			Random r = new Random(SEED);
 			for(String word : splitWords) {
 				if(word.length() != 0) {

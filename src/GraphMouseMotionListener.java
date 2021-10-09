@@ -13,5 +13,8 @@ public class GraphMouseMotionListener implements MouseMotionListener{
 		if(b != null) {
 			WordPanel.relabel(b.word);
 		}
+		else {
+			WordPanel.relabel("----------");
+		}
 	}
 }

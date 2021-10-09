@@ -88,7 +88,9 @@ public abstract class MyUtils{
 	public static Bar getBar(Point point) {
 		for(Bar b : bars) {
 			if(point.x >= b.x && point.x <= b.x + b.width) {
-				return b;
+				if(point.y >= b.y && point.y <= MAX_BAR_HEIGHT) {
+					return b;
+				}
 			}
 		}
 		

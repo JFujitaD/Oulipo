@@ -16,9 +16,10 @@ public abstract class MyUtils{
 	private static HashMap<String, Color> colorMap = new HashMap<>();
 	private static ArrayList<Bar> bars = new ArrayList<>();
 	
-	// Customize bar-width, max bar-height, and the seed for the random colors
-	private final static int BAR_WIDTH = 5;
+	// Customize bar-width, max bar-height, bar outline, and the seed for the random colors
+	private final static int BAR_WIDTH = 10;
 	private final static int MAX_BAR_HEIGHT = 800;
+	private final static boolean BAR_HAS_OUTLINE = true;
 	private final static long SEED = 12345;
 	
 	public static void processFile(String fileName) {
@@ -76,8 +77,11 @@ public abstract class MyUtils{
 			
 			g.setColor(colorMap.get(word));
 			g.fillRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
-			g.setColor(Color.WHITE);
-			g.drawRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
+			if(BAR_HAS_OUTLINE) {
+				g.setColor(Color.BLACK);
+				g.drawRect(currentP.x, currentP.y, BAR_WIDTH, barHeight);
+			}
+			
 			
 			bars.add(new Bar(word, currentP.x, currentP.y, BAR_WIDTH, barHeight));
 			

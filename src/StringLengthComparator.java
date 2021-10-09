@@ -8,6 +8,6 @@ public class StringLengthComparator implements Comparator<String>{
 		else if(a.length() > b.length())
 			return 1;
 		else
-			return 0;
+			return a.compareTo(b);
 	}
 }

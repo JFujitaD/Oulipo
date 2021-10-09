@@ -13,7 +13,7 @@ public class MyFrame extends JFrame{
 		this.setLayout(new BorderLayout());
 		
 		this.add(new GraphPanel(), BorderLayout.CENTER);
-		//this.add(new WordPanel(MyUtils.getSortedWords()), BorderLayout.WEST);
+		this.add(new WordPanel(), BorderLayout.NORTH);
 		
 		this.pack();
 		this.show();

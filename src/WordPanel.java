@@ -1,30 +1,31 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class WordPanel extends JPanel{
-	private final int PANEL_WIDTH = 250;
+	private static JLabel label = new JLabel("----------");
+	private final Color PANEL_BACKGROUND = Color.BLACK;
+	private final Font FONT = new Font("Sans-Serif", Font.BOLD, 32);
+	private final int PANEL_HEIGHT = 50;
+
 	
-	public WordPanel(ArrayList<String> words) {
-		this.setPreferredSize(new Dimension(PANEL_WIDTH, MyUtils.getPreferredSize().height));
+	public WordPanel() {
+		this.setPreferredSize(new Dimension(MyUtils.getPreferredSize().width, PANEL_HEIGHT));
+		this.setBackground(PANEL_BACKGROUND);
 		
-		// Text area
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("monospaced", Font.BOLD, 18));
-		textArea.append("----------");
-		for(String word : MyUtils.getSortedWords()) {
-			textArea.append("\n" + word);
-		}
+		// Label
+		label.setFont(FONT);
 		
-		textArea.setPreferredSize(new Dimension(PANEL_WIDTH, MyUtils.getPreferredSize().height));
-		this.add(textArea);
-		
-		// Scroll pane
-		JScrollPane scrollPane = new JScrollPane(textArea);
-		this.add(scrollPane);
+		this.add(label);
+	}
+	
+	public static void relabel(String word) {
+		label.setText(word);
 	}
 }

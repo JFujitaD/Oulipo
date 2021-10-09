@@ -17,7 +17,7 @@ public abstract class MyUtils{
 	private static ArrayList<Bar> bars = new ArrayList<>();
 	
 	// Customize bar-width, max bar-height, and the seed for the random colors
-	private final static int BAR_WIDTH = 10;
+	private final static int BAR_WIDTH = 5;
 	private final static int MAX_BAR_HEIGHT = 800;
 	private final static long SEED = 12345;
 	

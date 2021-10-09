@@ -11,7 +11,7 @@ public class GraphMouseMotionListener implements MouseMotionListener{
 		Bar b = MyUtils.getBar(e.getPoint());
 		
 		if(b != null) {
-			WordPanel.relabel(b.word);
+			WordPanel.relabel("#" + b.id + ":   " + b.word);
 		}
 		else {
 			WordPanel.relabel("----------");
